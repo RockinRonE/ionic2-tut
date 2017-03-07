@@ -9,10 +9,8 @@ import { TodolistModel } from '../../models/todolist.model';
   templateUrl: 'home.html'
 })
 export class HomePage {
-	todolist: TodolistModel;
-	// todolistmodel: TodolistModel; 
+	todolist: TodolistModel = new TodolistModel(); 
 	todolists: Array<TodolistModel> = []; 
-	// TodolistModel = new TodolistModel; 
 
 
   constructor(
@@ -36,21 +34,10 @@ addChecklist(): void {
 					{
 					text: 'Save', 
 					handler: data => {
-						this.todolist = data; 
-						// console.log(data);
-						// this.todolist = data;
-						// this.todolists.push(this.todolist);
-						// let name = data.name; 
-						// this.todolists.push(TodolistModel(name));
-						// let todolistmodel = new TodolistModel("hello");
-
-						// let newTodolist = this.todolistmodel(data.name)
-						// this.todolists.push( 
-						// console.log(data.name, []);
-						// let newTodolist = data.name,  ; 
-						// this.todolists.push(newTodolist);
-						console.log(this.todolist); 
-
+						this.todolist.name = data.name; 
+						this.todolists.push(this.todolist); 
+						// this.todolist = Object.assign(this.todolist, data);
+						console.log(this.todolists); 
 						}
 					}
 				]
