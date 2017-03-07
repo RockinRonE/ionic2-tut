@@ -34,10 +34,7 @@ addChecklist(): void {
 					{
 					text: 'Save', 
 					handler: data => {
-						this.todolist.name = data.name; 
-						this.todolists.push(this.todolist); 
-						// this.todolist = Object.assign(this.todolist, data);
-						console.log(this.todolists); 
+						this.todolists.push(Object.assign(new TodolistModel(), data));
 						}
 					}
 				]
@@ -49,6 +46,8 @@ addChecklist(): void {
 				// } 
 			// ]
 		});
+
+
 
 		prompt.present(); }
 
