@@ -3,13 +3,15 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
-import { TodolistPage } from '../pages/todolist-page/todolist-page'; 
+import { TodosPage } from '../pages/todos/todos'; 
+
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    TodolistPage,
+    TodosPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -18,7 +20,7 @@ import { TodolistPage } from '../pages/todolist-page/todolist-page';
   entryComponents: [
     MyApp,
     HomePage,
-    TodolistPage,
+    TodosPage,
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

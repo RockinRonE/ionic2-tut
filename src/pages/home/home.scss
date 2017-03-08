@@ -1,3 +1,18 @@
 page-home {
 
+	ion-item-sliding {
+		margin: 5px; 
+	}
+
+	.home-todo {
+		font-size: 1.2em;
+		color: #101CA7; 
+		padding: 10px 0 10px 0;
+	}
+
+	.todos-count {
+		display: block;
+		padding: 10px 0 10px 0; 
+	}
+
 }

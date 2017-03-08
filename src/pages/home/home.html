@@ -7,7 +7,7 @@
     </ion-title>
 
     <ion-buttons end> 
-      <button ion-button icon-only (click)="addChecklist()">
+      <button ion-button icon-only (click)="addTodolist()">
         <ion-icon name="add-circle" ></ion-icon>
       </button>
     </ion-buttons>
@@ -22,19 +22,20 @@
 
     <ion-item-sliding *ngFor="let todolist of todolists">
 
-      <button ion-item>
+      <button ion-item class="home-todo" (click)="viewTodolist(todolist)">
+
         {{todolist.name}}
-        <span>0 todos</span>
+        <span class="todos-count">0 todos</span>
       </button>
 
       <ion-item-options>
 
-        <button ion-button icon-only color="light">
+        <button ion-button icon-only color="light" (click)="renameTodolist(todolist)">
           <ion-icon name="clipboard"></ion-icon>
           Edit
         </button>
 
-        <button ion-button icon-only color="danger">
+        <button ion-button icon-only color="danger" (click)="deleteTodolist(todolist)">
           <ion-icon name="trash"></ion-icon>
           Delete
         </button>
