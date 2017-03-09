@@ -1,21 +1,93 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController} from 'ionic-angular';
+// importing model for strongtyping
+import { TodolistModel } from '../../models/todolist.model';
+import { TodoModel } from '../../models/todo.model'
 
-import { TodolistModel } from '../../models/todolist.model'; 
+
 
 @Component({
   selector: 'todos-page',
   templateUrl: 'todos.html'
 })
 export class TodosPage {
-	todolist: TodolistModel[];
+	todolist: TodolistModel;  
+	todos: Array<TodoModel> = []; 
 
   constructor(
-  	private alertCtrl: AlertController, 
   	public navCtrl: NavController, 
-  	public navParams: NavParams
-  ) {}
+  	private navParams: NavParams,
+  	private alertCtrl: AlertController
+  ) {
+  	 this.todolist = navParams.get('todolist'); 
+  }
 
-  
+  addTodo(): void {
+		let prompt = this.alertCtrl.create({
+			title: 'Add a Todo',
+			message: 'Enter the name of your todo:',
+			inputs: [ 
+					{
+						name: 'name' 
+					}
+				], 
+			buttons: [
+					{
+						text: 'Cancel'
+					}, 
+					{
+						text: 'Save', 
+						handler: data => {
+							this.todos.push(Object.assign(new TodoModel(), data));
+
+						}
+					}
+				]
+		});
+
+		prompt.present(); 
+	}
+
+	renameTodo(todo): void {
+		let prompt = this.alertCtrl.create({
+			title: 'Rename This Todo',
+			message: 'Enter the new name of this todo:',
+			inputs: [
+				{
+					name: 'name'
+				}
+			],
+			buttons: [
+				{
+					text: 'Cancel'
+				},
+				{
+					text: 'Save',
+					handler: data => {
+						let index = this.todos.indexOf(todo);
+
+						if(index > -1) {
+							this.todos[index].name = data.name; 
+						}
+					}
+				}
+			]
+
+		});
+
+		prompt.present(); 
+	}
+
+	deleteTodo(todo): void {
+		let index = this.todos.indexOf(todo);
+
+		if(index > -1) {
+			this.todos.splice(index, 1); 
+		}
+	}
+
+
+
+
 
 }
