@@ -23,11 +23,11 @@
 <ion-content>
     <ion-list no-lines>
 
-        <ion-item-sliding *ngFor="let todo of todos">
+        <ion-item-sliding *ngFor="let todo of todosArray">
 
             <ion-item>
                 <!-- <ion-label>Todo name</ion-label> -->
-                <ion-label>{{todo.name}}</ion-label>
+                <ion-label>{{todo}}</ion-label>
                 <ion-checkbox> </ion-checkbox>
             </ion-item>
 

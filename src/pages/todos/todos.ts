@@ -14,7 +14,7 @@ export class TodosPage {
 	todolist: TodolistModel;  
 
 	todo: TodoModel; 
-	// todos: Array<TodoModel> = []; 
+	todosArray: Array<TodoModel> = []; 
 
   constructor(
   	public navCtrl: NavController, 
@@ -40,10 +40,13 @@ export class TodosPage {
 					{
 						text: 'Save', 
 						handler: data => {
+
 							let todos = Object.assign(new TodoModel(), data);
 						// console.log(todos); 
 							this.todolist.todos.push(todos); 
-							console.log(this.todolist); 
+							// console.log(this.todolist); 
+							this.todosArray.push(data.name);
+							console.log(this.todosArray);
 							// console.log(this.todolist); 
 							// this.todos.push(Object.assign(new TodoModel(), data));
 							// console.log(this.todos);
@@ -79,10 +82,10 @@ export class TodosPage {
 				{
 					text: 'Save',
 					handler: data => {
-						let index = this.todos.indexOf(todo);
+						let index = this.todosArray.indexOf(todo);
 
 						if(index > -1) {
-							this.todos[index].name = data.name; 
+							this.todosArray[index].name = data.name; 
 						}
 					}
 				}
@@ -94,10 +97,10 @@ export class TodosPage {
 	}
 
 	deleteTodo(todo): void {
-		let index = this.todos.indexOf(todo);
+		let index = this.todosArray.indexOf(todo);
 
 		if(index > -1) {
-			this.todos.splice(index, 1); 
+			this.todosArray.splice(index, 1); 
 		}
 	}
 
