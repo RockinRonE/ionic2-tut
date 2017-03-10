@@ -13,7 +13,7 @@ import { Data } from '../../providers/data';
   templateUrl: 'home.html'
 })
 export class HomePage {
-	todolist: TodolistModel = new TodolistModel(); 
+	
 	todolists: Array<TodolistModel> = [];  
 
 
@@ -23,28 +23,17 @@ export class HomePage {
   	private dataService: Data
   ) { 
   	this.dataService.getData().then(todolists => {
-  		// CHECK THIS
-  		let savedTodolists: any = false; 
-
-  		if(todolists && typeof(todolists) != 'undefined') {
-  			savedTodolists = JSON.parse(todolists);
-  			
-  		}
-
-  		if(savedTodolists) {
-  			console.log(savedTodolists);
-  			// savedTodolists.forEach(savedTodolist => {
-  				// const {title, items} = savedTodolist; 
-  				// console.log(title);
-  				// console.log(items);
-  				// this.todolists.push(Object.assign(new TodolistModel(), title, items));
-  				// console.log(todolists); 
-
-  				// console.log(savedTodolist.title);
-  				// this.todolists.push(Object.assign(new TodolistModel(), savedTodolist.title, savedTodolist.items));
-  				// console.log(savedTodolist); 
-  			// })
-  		}
+  		console.log(todolists); 
+  		let savedTodolists = JSON.parse(todolists); 
+  		console.log(savedTodolists);
+  		this.todolists.push(Object.assign(new TodolistModel(), savedTodolists)); 
+			console.log(this.todolists); 
+  		// // if(savedTodolists) { 
+	  	// // 	savedTodolists.forEach(todolist => {
+				// // 	let todolistObject = Object.assign(new TodolistModel(), todolist); 
+		  // // 		this.todolists.push(todolistObject);
+	  	// // 	})
+	  	// }
   	})
   }
 
@@ -65,6 +54,9 @@ export class HomePage {
 						text: 'Save', 
 						handler: data => {
 							this.todolists.push(Object.assign(new TodolistModel(), data));
+							// console.log(this.todolists);
+							// this.dataService.save(this.todolists);
+							this.save(); 
 						}
 					}
 				]
@@ -117,7 +109,9 @@ export class HomePage {
 		});
 	}
 
-
+	save(): void {
+		this.dataService.save(this.todolists);
+	}
 
 
 

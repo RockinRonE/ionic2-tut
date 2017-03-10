@@ -4,6 +4,7 @@ import { NavController, NavParams, AlertController} from 'ionic-angular';
 import { TodolistModel } from '../../models/todolist.model';
 import { ItemModel } from '../../models/item.model'
 
+import { Data } from '../../providers/data';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class ItemsPage {
   constructor( 
   	public navCtrl: NavController, 
   	private navParams: NavParams,
-  	private alertCtrl: AlertController
+  	private alertCtrl: AlertController,
+  	private dataService: Data,
   ) {
   	 this.todolist = navParams.get('todolist'); 
   }
@@ -41,7 +43,8 @@ export class ItemsPage {
 							let items = Object.assign(new ItemModel(), data);
 
 							this.todolist.todos.push(items);
-							console.log(this.todolist);
+							this.save(); 
+
 						}
 					}
 				]
@@ -88,7 +91,9 @@ export class ItemsPage {
 		}
 	}
 
-
+	save(): void {
+		this.dataService.save(this.todolist); 
+	}
 
 
 
