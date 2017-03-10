@@ -2,21 +2,18 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController} from 'ionic-angular';
 // importing model for strongtyping
 import { TodolistModel } from '../../models/todolist.model';
-import { TodoModel } from '../../models/todo.model'
+import { ItemModel } from '../../models/item.model'
 
 
 
 @Component({
-  selector: 'todos-page',
-  templateUrl: 'todos.html'
+  selector: 'items-page',
+  templateUrl: 'item.html'
 })
-export class TodosPage {
-	todolist: TodolistModel;  
+export class ItemsPage {
+	todolist: TodolistModel;
 
-	todo: TodoModel; 
-	todosArray: Array<TodoModel> = []; 
-
-  constructor(
+  constructor( 
   	public navCtrl: NavController, 
   	private navParams: NavParams,
   	private alertCtrl: AlertController
@@ -41,11 +38,10 @@ export class TodosPage {
 						text: 'Save', 
 						handler: data => {
 
-							let todos = Object.assign(new TodoModel(), data);
-							// this pushes todos on a todolist's todos array
-							this.todolist.todos.push(todos); 
-							// pushes name to array to be displayed in view
-							this.todosArray.push(data.name);
+							let items = Object.assign(new ItemModel(), data);
+
+							this.todolist.todos.push(items);
+							console.log(this.todolist);
 						}
 					}
 				]
@@ -54,10 +50,10 @@ export class TodosPage {
 		prompt.present(); 
 	}
 
-	renameTodo(todo): void {
+	renameItem(item): void {
 		let prompt = this.alertCtrl.create({
-			title: 'Rename This Todo',
-			message: 'Enter the new name of this todo:',
+			title: 'Rename This item',
+			message: 'Enter the new name of this item:',
 			inputs: [
 				{
 					name: 'name'
@@ -70,10 +66,12 @@ export class TodosPage {
 				{
 					text: 'Save',
 					handler: data => {
-						let index = this.todosArray.indexOf(todo);
+						let index = this.todolist.todos.indexOf(item);
+						// console.log(data.name);
 
 						if(index > -1) {
-							this.todosArray[index].name = data.name; 
+							// console.log(this.todolist.todos[index]);
+							this.todolist.todos[index].name = data.name; 
 						}
 					}
 				}
@@ -84,12 +82,12 @@ export class TodosPage {
 		prompt.present(); 
 	}
 
-	deleteTodo(todo): void {
-		let index = this.todosArray.indexOf(todo);
+	deleteItem(item): void {
+		// let index = this.todosArray.indexOf(todo);
 
-		if(index > -1) {
-			this.todosArray.splice(index, 1); 
-		}
+		// if(index > -1) {
+			// this.todosArray.splice(index, 1); 
+		// }
 	}
 
 

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { NavController, AlertController } from 'ionic-angular';
 import { TodolistModel } from '../../models/todolist.model'; 
-import { TodosPage } from '../todos/todos';
+import { ItemsPage } from '../item/item';
 
 // Import data
 import { Data } from '../../providers/data'; 
@@ -32,8 +32,9 @@ export class HomePage {
   		}
 
   		if(savedTodolists) {
-  			savedTodolists.forEach(savedTodolist => {
-  				const {title, items} = savedTodolist; 
+  			console.log(savedTodolists);
+  			// savedTodolists.forEach(savedTodolist => {
+  				// const {title, items} = savedTodolist; 
   				// console.log(title);
   				// console.log(items);
   				// this.todolists.push(Object.assign(new TodolistModel(), title, items));
@@ -42,7 +43,7 @@ export class HomePage {
   				// console.log(savedTodolist.title);
   				// this.todolists.push(Object.assign(new TodolistModel(), savedTodolist.title, savedTodolist.items));
   				// console.log(savedTodolist); 
-  			})
+  			// })
   		}
   	})
   }
@@ -111,7 +112,7 @@ export class HomePage {
 	}
 
 	viewTodolist(todolist): void {
-		this.navCtrl.push(TodosPage, {
+		this.navCtrl.push(ItemsPage, {
 			todolist: todolist
 		});
 	}

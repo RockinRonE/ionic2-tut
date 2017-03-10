@@ -13,7 +13,7 @@ export class Data {
 
 	// TODO: Sure it's any?
 	getData(): Promise<any> {
-		return this.storage.get('checklists');
+		return this.storage.get('todolists');
 	}
 
 }

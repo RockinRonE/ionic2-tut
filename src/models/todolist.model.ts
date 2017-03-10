@@ -1,6 +1,6 @@
-import { TodoModel } from './todo.model';
+import { ItemModel } from './item.model';
 
 export class TodolistModel {
 	name: string;
-	todos: Array<TodoModel> = []; 
+	todos: Array<ItemModel> = []; 
 }

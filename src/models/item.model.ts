@@ -1,4 +1,4 @@
-export class TodoModel { 
+export class ItemModel { 
 	name: string;
 	checked: boolean = false; 
 }

@@ -2,7 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { TodosPage } from '../pages/todos/todos'; 
+import { ItemsPage } from '../pages/item/item'; 
 
 import { Storage } from '@ionic/storage'; 
 import { Data } from '../providers/data'; 
@@ -13,7 +13,7 @@ import { Data } from '../providers/data';
   declarations: [
     MyApp,
     HomePage,
-    TodosPage,
+    ItemsPage,
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -22,7 +22,7 @@ import { Data } from '../providers/data';
   entryComponents: [
     MyApp,
     HomePage,
-    TodosPage,
+    ItemsPage,
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Data, Storage]
 })
