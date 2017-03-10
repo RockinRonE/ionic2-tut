@@ -67,10 +67,8 @@ export class ItemsPage {
 					text: 'Save',
 					handler: data => {
 						let index = this.todolist.todos.indexOf(item);
-						// console.log(data.name);
 
 						if(index > -1) {
-							// console.log(this.todolist.todos[index]);
 							this.todolist.todos[index].name = data.name; 
 						}
 					}
@@ -83,11 +81,11 @@ export class ItemsPage {
 	}
 
 	deleteItem(item): void {
-		// let index = this.todosArray.indexOf(todo);
+		let index = this.todolist.todos.indexOf(item); 
 
-		// if(index > -1) {
-			// this.todosArray.splice(index, 1); 
-		// }
+		if(index > -1) {
+			this.todolist.todos.splice(index, 1); 
+		}
 	}
 
 
