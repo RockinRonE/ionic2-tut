@@ -12,7 +12,9 @@ import { TodoModel } from '../../models/todo.model'
 })
 export class TodosPage {
 	todolist: TodolistModel;  
-	todos: Array<TodoModel> = []; 
+
+	todo: TodoModel; 
+	// todos: Array<TodoModel> = []; 
 
   constructor(
   	public navCtrl: NavController, 
@@ -38,7 +40,20 @@ export class TodosPage {
 					{
 						text: 'Save', 
 						handler: data => {
-							this.todos.push(Object.assign(new TodoModel(), data));
+							let todos = Object.assign(new TodoModel(), data);
+						// console.log(todos); 
+							this.todolist.todos.push(todos); 
+							console.log(this.todolist); 
+							// console.log(this.todolist); 
+							// this.todos.push(Object.assign(new TodoModel(), data));
+							// console.log(this.todos);
+							// let {name} = data; 
+							// this.todolist.todos.push({name, checked: false}); 
+							// console.log(this.todolist); 
+							// let testArray = Array.from(data.name); 
+							// console.log(testArray);
+							// let items = this.todolist.todos; 
+							// this.todos;
 
 						}
 					}

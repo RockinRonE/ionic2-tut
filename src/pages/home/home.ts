@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 
 import { NavController, AlertController } from 'ionic-angular';
 import { TodolistModel } from '../../models/todolist.model'; 
-
 import { TodosPage } from '../todos/todos';
+
+// Import data
+import { Data } from '../../providers/data'; 
 
 
 @Component({
@@ -12,13 +14,38 @@ import { TodosPage } from '../todos/todos';
 })
 export class HomePage {
 	todolist: TodolistModel = new TodolistModel(); 
-	todolists: Array<TodolistModel> = []; 
+	todolists: Array<TodolistModel> = [];  
 
 
   constructor(
   	public navCtrl: NavController,
-  	private alertCtrl: AlertController
-  ) { }
+  	private alertCtrl: AlertController,
+  	private dataService: Data
+  ) { 
+  	this.dataService.getData().then(todolists => {
+  		// CHECK THIS
+  		let savedTodolists: any = false; 
+
+  		if(todolists && typeof(todolists) != 'undefined') {
+  			savedTodolists = JSON.parse(todolists);
+  			
+  		}
+
+  		if(savedTodolists) {
+  			savedTodolists.forEach(savedTodolist => {
+  				const {title, items} = savedTodolist; 
+  				// console.log(title);
+  				// console.log(items);
+  				// this.todolists.push(Object.assign(new TodolistModel(), title, items));
+  				// console.log(todolists); 
+
+  				// console.log(savedTodolist.title);
+  				// this.todolists.push(Object.assign(new TodolistModel(), savedTodolist.title, savedTodolist.items));
+  				// console.log(savedTodolist); 
+  			})
+  		}
+  	})
+  }
 
 	addTodolist(): void {
 		let prompt = this.alertCtrl.create({

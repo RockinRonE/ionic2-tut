@@ -2,8 +2,10 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-
 import { TodosPage } from '../pages/todos/todos'; 
+
+import { Storage } from '@ionic/storage'; 
+import { Data } from '../providers/data'; 
 
 
 
@@ -22,6 +24,6 @@ import { TodosPage } from '../pages/todos/todos';
     HomePage,
     TodosPage,
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Data, Storage]
 })
 export class AppModule {}

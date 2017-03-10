@@ -1,4 +1,6 @@
+import { TodoModel } from './todo.model';
+
 export class TodolistModel {
 	name: string;
-	todos: Array<string> = []; 
+	todos: Array<TodoModel> = []; 
 }
