@@ -42,22 +42,10 @@ export class TodosPage {
 						handler: data => {
 
 							let todos = Object.assign(new TodoModel(), data);
-						// console.log(todos); 
+							// this pushes todos on a todolist's todos array
 							this.todolist.todos.push(todos); 
-							// console.log(this.todolist); 
+							// pushes name to array to be displayed in view
 							this.todosArray.push(data.name);
-							console.log(this.todosArray);
-							// console.log(this.todolist); 
-							// this.todos.push(Object.assign(new TodoModel(), data));
-							// console.log(this.todos);
-							// let {name} = data; 
-							// this.todolist.todos.push({name, checked: false}); 
-							// console.log(this.todolist); 
-							// let testArray = Array.from(data.name); 
-							// console.log(testArray);
-							// let items = this.todolist.todos; 
-							// this.todos;
-
 						}
 					}
 				]
