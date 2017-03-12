@@ -16,4 +16,4 @@ export class Data {
 		return this.storage.get('todolists');
 	}
 
-}
+} 

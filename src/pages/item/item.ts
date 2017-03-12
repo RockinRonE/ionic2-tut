@@ -21,6 +21,7 @@ export class ItemsPage {
   	private dataService: Data,
   ) {
   	 this.todolist = navParams.get('todolist'); 
+  	 console.log(this.todolist); 
   }
 
   addTodo(): void {
@@ -42,7 +43,7 @@ export class ItemsPage {
 
 							let items = Object.assign(new ItemModel(), data);
 
-							this.todolist.todos.push(items);
+							this.todolist.items.push(items);
 							this.save(); 
 
 						}
@@ -69,10 +70,10 @@ export class ItemsPage {
 				{
 					text: 'Save',
 					handler: data => {
-						let index = this.todolist.todos.indexOf(item);
+						let index = this.todolist.items.indexOf(item);
 
 						if(index > -1) {
-							this.todolist.todos[index].name = data.name; 
+							this.todolist.items[index].name = data.name; 
 						}
 					}
 				}
@@ -84,10 +85,10 @@ export class ItemsPage {
 	}
 
 	deleteItem(item): void {
-		let index = this.todolist.todos.indexOf(item); 
+		let index = this.todolist.items.indexOf(item); 
 
 		if(index > -1) {
-			this.todolist.todos.splice(index, 1); 
+			this.todolist.items.splice(index, 1); 
 		}
 	}
 

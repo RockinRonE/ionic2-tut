@@ -20,12 +20,12 @@
 
   <ion-list no-lines>
 
-    <ion-item-sliding *ngFor="let todolist of todolists">
+    <ion-item-sliding *ngFor="let todolist of todolists" >
 
       <button ion-item class="home-todo" (click)="viewTodolist(todolist)">
 
         {{todolist.name}}
-        <span class="todos-count">0 todos</span>
+        <span class="todos-count">{{todolist.items.length}} todos</span>
       </button>
 
       <ion-item-options>

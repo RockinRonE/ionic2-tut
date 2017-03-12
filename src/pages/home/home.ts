@@ -23,17 +23,13 @@ export class HomePage {
   	private dataService: Data
   ) { 
   	this.dataService.getData().then(todolists => {
-  		console.log(todolists); 
-  		let savedTodolists = JSON.parse(todolists); 
-  		console.log(savedTodolists);
-  		this.todolists.push(Object.assign(new TodolistModel(), savedTodolists)); 
-			console.log(this.todolists); 
-  		// // if(savedTodolists) { 
-	  	// // 	savedTodolists.forEach(todolist => {
-				// // 	let todolistObject = Object.assign(new TodolistModel(), todolist); 
-		  // // 		this.todolists.push(todolistObject);
-	  	// // 	})
-	  	// }
+  		// console.log(todolists); 
+  		if (todolists) {
+	  		let savedTodolists = JSON.parse(todolists); 
+  			this.todolists = savedTodolists; 
+  			console.log(this.todolists);
+
+  		}
   	})
   }
 
@@ -54,7 +50,7 @@ export class HomePage {
 						text: 'Save', 
 						handler: data => {
 							this.todolists.push(Object.assign(new TodolistModel(), data));
-							// console.log(this.todolists);
+							console.log(this.todolists);
 							// this.dataService.save(this.todolists);
 							this.save(); 
 						}
